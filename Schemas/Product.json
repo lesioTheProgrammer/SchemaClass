@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.synergyworldwide.com/cosmos-schemas/Product/product-option.schema.json",
+  "description": "The document type storing the product/size/variant/option information",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "product"
+    },
+    "iso2CountryCode": {
+      "type": "string",
+      "maxLength": 2,
+      "description": "Partition key value"
+    },
+    "productId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "imagePath": {
+      "type": "string"
+    },
+    "thumbPath": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "isPack": {
+      "type": "boolean"
+    },
+    "displayOrder": {
+      "type": "integer"
+    },
+    "availability": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "custType": {
+            "type": "string"
+          },
+          "cartType": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "custType",
+          "cartType"
+        ]
+      }
+    },
+    "size": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sizeId": {
+            "type": "string"
+          },
+          "unitSize": {
+            "type": "string"
+          },
+          "unitMeasurement": {
+            "type": "string"
+          },
+          "displayOrder": {
+            "type": "integer"
+          },
+          "variant": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "variantId": {
+                  "type": "string"
+                },
+                "variantDesc": {
+                  "type": "string"
+                },
+                "displayOrder": {
+                  "type": "integer"
+                },
+                "option": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "optionId": {
+                        "type": "string"
+                      },
+                      "optionName": {
+                        "type": "string"
+                      },
+                      "optionDesc": {
+                        "type": "string"
+                      },
+                      "sku": {
+                        "type": "string"
+                      },
+                      "imagePath": {
+                        "type": "string"
+                      },
+                      "thumbPath": {
+                        "type": "string"
+                      },
+                      "shortDesc": {
+                        "type": "string"
+                      },
+                      "longDesc": {
+                        "type": "string"
+                      },
+                      "optionAvailability": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "custType": {
+                              "type": "string"
+                            },
+                            "cartType": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "custType",
+                            "cartType"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "optionId",
+                      "optionName",
+                      "optionDesc",
+                      "sku"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "variantId",
+                "variantDesc",
+                "displayOrder"
+              ]
+            }
+          }
+        },
+        "required": [
+          "sizeId",
+          "unitSize",
+          "displayOrder"
+        ]
+      }
+    }
+  },
+  "required": [
+    "type",
+    "iso2CountryCode",
+    "productId",
+    "name",
+    "isPack",
+    "displayOrder"
+  ]
+}
